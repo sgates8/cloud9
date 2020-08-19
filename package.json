@@ -11,7 +11,7 @@
     "url": "git+https://github.com/sgates8/cloud9.git"
   },
   "author": "",
-  "license": "GNU",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/sgates8/cloud9/issues"
   },
