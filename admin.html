@@ -14,17 +14,20 @@
 <li id="header"><a href="homepage.html">Home</a></li>
 </ul>
 <!--This needs to be on another admin page that allows admin to view and send events....to customer input page once securely logged on-->
-<h3>Customer Database</h3> <!--this table may need to have a button to click next for the increase of customers..maybe 10 for 200 customers...20 on each page-->
+<h3>Customer Database</h3>
 <br><!--blank space for table code-->
-<br>
-<br>
-<br> 
-<br>
-<button id="Table--next">Next</button> <!--moves to next table if more customers to view to select a customer-->
-<button id="Table--back">Back</button>
-<br>
-Total Customers: <!--number of customers in database-->
-<br>
-New customer update: <!--notifies of a new customer submission from input page or section of the site---the admin section could be grayed out instead of on another page-->
+<table>
+    <thead> <!-- Table Head -->
+        <th>Customer Name</th> <!-- Table column -->
+        <th>Phone Number</th>
+    </thead>
+    <tbody id="custDatabase"> <!-- Table Body -->
+        
+        <tr> <!-- Table Row -->
+            <td>Example Name</td> <!-- Table Cell --> 
+            <td>706-000-0000</td>
+        </tr>
+    </tbody>
+</table>
 </body>
 </html>
