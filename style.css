@@ -1,0 +1,77 @@
+/*to read the comments, "this" refers to everything below the comment until the next comment*/
+
+/*this sets the background color for the whole site*/
+html {
+    background-color: #d9e8ff;
+}
+/*this sets the style for the header*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+li {
+    float: left;
+    color: darkslategrey;
+    border-style: solid;
+    border-color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 15px 16px;
+}
+li:hover {
+    background-color: #9ebdc2;
+    border-style: inset;
+    border-color: #aaaaa5;
+}
+li a {
+    color: darkslategray;
+    text-decoration: none;
+    display: block;
+}
+/*this styles the logo and welcome message*/
+/*still working on this will update later*/
+.home {
+    grid-template-columns: 40px 50px auto 50px 40px;
+    grid-template-rows: 25% 100px auto;
+}
+.landing {
+    display: grid;
+    place-items: center;
+    outline: auto;
+    
+}
+/*this animation makes the logo fade into view*/
+.logo {
+    animation: fadeIn ease 3s;
+    -webkit-animation: fadeIn ease 3s;
+    -moz-animation: fadeIn ease 3s;
+    -o-animation: fadeIn ease 3s;
+    -ms-animation: fadeIn ease 3s;
+    }
+    @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
