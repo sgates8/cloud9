@@ -26,7 +26,7 @@ app.get("/", (req,res) => {
 
 // Server side form validation
 app.post("/register", [
-    check("fname")        
+    check("fname")
         // Remove excess whitespace so we can see if we got only spaces
         .trim()
         // Name can't be just empty
