@@ -26,19 +26,20 @@ app.get("/", (req,res) => {
 
 // Server side form validation
 app.post("/register", [
-    check("fname")
+    check("fname")        
+        // Remove excess whitespace so we can see if we got only spaces
+        .trim()
         // Name can't be just empty
         .not().isEmpty().withMessage("First name is required.")
-        // Trim excess whitespace on the ends and escape html characters
-        .trim().escape()
         // Matches letters spaces hyphens and apostrophes - there is an enhancement waiting to be added to validator.js that will add this to isAlpha but it isn't done yet
-        .matches("/^[A-Za-z '-]$/").withMessage("Names may only contain letters with spaces, hyphens, and apostrophes.")
+        .matches(/^[A-Za-z\s'-]+$/).withMessage("Names may only contain letters with spaces, hyphens, and apostrophes.")
         // Match the length of the database column
         .isLength( { min:2, max:30 }).withMessage("Please enter a first name between 2 and 30 characters."),
     check("lname")
+        // Same as before but it can be a little longer
+        .trim()
         .not().isEmpty().withMessage("Last name is required.")
-        .trim().escape()
-        .matches("/^[A-Za-z '-]$/").withMessage("Names may only contain letters with spaces, hyphens, and apostrophes.")
+        .matches(/^[A-Za-z\s'-]+$/).withMessage("Names may only contain letters with spaces, hyphens, and apostrophes.")
         .isLength( { min:2, max:45 }).withMessage("Please enter a last name between 2 and 45 characters."),
     check("phoneNum1")
         // Phone number can't just be empty
@@ -74,15 +75,22 @@ app.post("/register", [
     }
     else {
         // If no errors, add information to database
-
-        // This is where database functions go
-        // Nest the connection queries
-        // Nest res.render in the final query
-        // Should probably ask Nick if there is a better way to do that with async/await
-
-        // And also send a success
-        let success = "Thank you for registering!"
-        res.render("home", { success })
+        // First set some variables, removing extra whitespace
+        // Ask about escape/unescape
+        let fname = req.body.fname.trim();
+        let lname = req.body.lname.trim();
+        let phone = req.body.phoneNum1+req.body.phoneNum2+req.body.phoneNum3;
+        // Then template out the query, ?? for column names, ? for values in those columns
+        let insert = `INSERT INTO cloud9(??, ??, ??) VALUES (?, ?, ?)`
+        // Actually connect to the database, array is in order of ?s
+        connection.query(insert, ["fname", "lname", "phone", fname, lname, phone], (req, res) => {
+            // If it doesn't work, pitch a fit
+            if (err) throw err;
+            // Build success message
+            let success = `Thank you for registering, ${fname} ${lname}!  We'll text you coupon codes at ${req.body.phoneNum1}) ${req.body.phoneNum2}-${req.body.phoneNum3}.`
+            // Send success message - consider making a success page or hiding the form on success
+            res.render("home", { success });
+        });
     }
 });
 
