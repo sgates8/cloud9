@@ -1,8 +1,9 @@
 /*to read the comments, "this" refers to everything below the comment until the next comment*/
 
-/*this sets the background color for the whole site*/
+/*this sets the background color and font family for the whole site*/
 html {
     background-color: #d9e8ff;
+    font-family: 'Libre Franklin', sans-serif;
 }
 /*this sets the style for the header*/
 ul {
@@ -32,19 +33,9 @@ li a {
     display: block;
 }
 /*this styles the logo and welcome message*/
-/*still working on this will update later*/
-.home {
-    grid-template-columns: 40px 50px auto 50px 40px;
-    grid-template-rows: 25% 100px auto;
-}
 .landing {
     display: grid;
     place-items: center;
-    outline: auto;
-    
-}
-/*this animation makes the logo fade into view*/
-.logo {
     animation: fadeIn ease 3s;
     -webkit-animation: fadeIn ease 3s;
     -moz-animation: fadeIn ease 3s;
@@ -74,4 +65,23 @@ li a {
     @-ms-keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
-    }
+}
+.welcome {
+    margin-bottom: 4%;
+}
+/*this adds a shadow to the logo image*/
+img {
+    filter: drop-shadow(0 0 3rem darkslategray);
+}
+/*this styles the customer page*/
+.custInput {
+    display: grid;
+    place-items: center;
+}
+/*this styles the admin page*/
+.adminPg {
+    display: grid;
+    place-items: center;
+}
+/*#error and #success will need styling for error/success messages*/
+/*change padding for table so columns are more separated*/
