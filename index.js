@@ -10,20 +10,28 @@ const { check, validationResult } = require("express-validator");
 // Set the templating engine
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded( { extended: true } ));
-app.use(bodyparser.json);
+// app.use(bodyParser.json);
 app.use(express.static(__dirname + "/public"));
 
 // Set the mysql connection
 let connection = mysql.createConnection({
-    host     : '',
-    user     : '',
-    database : '',
-    password : ''
+    host     : 'localhost',
+    user     : 'root',
+    database : 'cloud9',
+    password : 'root'
 });
 
 // Render homepage
-app.get("/", (req,res) => {
-    res.render("home")
+app.get("/", (req, res) => {
+    res.render("home");
+});
+app.get("/homepage.html", (req, res) => {
+    res.render("home");
+});
+
+// Render customer page
+app.get ("/customer.html", (req, res) => {
+    res.render("customer");
 });
 
 // Server side form validation
@@ -36,7 +44,7 @@ app.post("/register", [
         // If err, kick the user out to fix it
         .bail()
         // Matches letters spaces hyphens and apostrophes, including unicode characters for people with accents in their names, see https://regex101.com/r/ZKZkOC/4/ for examples
-        .matches(/^(((?!.*'.*)(?!.*-.*)([ ]*))|([\p{L}]+))(?!.*''.*)(?!.*--.*)(?!.*  .*)[\p{L} '-]*$/gmu).withMessage("First name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
+        .matches(/[^-']([a-zA-ZÀ-ÖØ-öø-ÿ\ '-](?!.*''|--|\ \ |-\ |'\ |\ '|\ -.*))+/).withMessage("First name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
         // If err, kick the user out to fix it
         .bail()
         // Match the length of the database column
@@ -46,7 +54,7 @@ app.post("/register", [
         .trim()
         .notEmpty().withMessage("Last name is required.")
         .bail()
-        .matches(/^(((?!.*'.*)(?!.*-.*)([ ]*))|([\p{L}]+))(?!.*''.*)(?!.*--.*)(?!.*  .*)[\p{L} '-]*$/gmu).withMessage("Last name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
+        .matches(/[^-']([a-zA-ZÀ-ÖØ-öø-ÿ\ '-](?!.*''|--|\ \ |-\ |'\ |\ '|\ -.*))+/).withMessage("Last name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
         .bail()
         .isLength( { min:2, max:45 }).withMessage("Please enter a last name between 2 and 45 characters."),
     check("phoneNum1")
@@ -79,40 +87,43 @@ app.post("/register", [
     ], 
     (req, res) => {  
         // Check our results
-        const result = validationResult(req);
+        let result = validationResult(req);
         // Stuff them in an object
         let errors = result.errors;  
         // Show me the errors in the console
         for (let key in errors) {
             console.log(errors[key].value);
-    }
-    if (!result.isEmpty()) {
-        // If errors, send back to form with errors
-            res.render("home", { errors })
-    }
-    else {
-        // If no errors, add information to database
-        // First set some variables, removing extra whitespace
-        // Ask about escape/unescape
+        }
+        // Set some variables, removing extra whitespace
         let fname = req.body.fname.trim();
         let lname = req.body.lname.trim();
-        let phone = req.body.phoneNum1+req.body.phoneNum2+req.body.phoneNum3;
-        // Then template out the query, ?? for column names, ? for values in those columns
-        let insert = `INSERT INTO customers(??, ??, ??) VALUES (?, ?, ?)`
-        // Actually connect to the database, array is in order of ?s
-        connection.query(insert, ["fname", "lname", "phone", fname, lname, phone], (err, results) => {
-            // If it doesn't work, pitch a fit
-            if (err) throw err;
-            // Build success message
-            let success = `Thank you for registering, ${fname} ${lname}!  We'll text you coupon codes at (${req.body.phoneNum1}) ${req.body.phoneNum2}-${req.body.phoneNum3}.`
-            // Send success message - consider making a success page or hiding the form on success
-            res.render("home", { success });
-        });
-    }
+        let phone = [req.body.phoneNum1, req.body.phoneNum2, req.body.phoneNum3];
+        if (!result.isEmpty()) {
+            // If errors, send back to form with errors
+                res.render("customer", { errors, fname, lname, phone })
+        }
+        else {
+            // If no errors, add information to database
+            // Then template out the query, ?? for column names, ? for values in those columns
+            let insert = `INSERT INTO customers(??, ??, ??) VALUES (?, ?, ?)`;
+            // Actually connect to the database, array is in order of ?s
+            connection.query(insert, ["fname", "lname", "phone", fname, lname, phone[0]+phone[1]+phone[2]], (err, results) => {
+                // If it doesn't work, pitch a fit
+                if (err) {
+                    throw err;
+                }
+                else {
+                // Build success message
+                let success = `Thank you for registering, ${fname} ${lname}!  We'll text you coupon codes at (${phone[0]}) ${phone[1]}-${phone[2]}.`
+                // Send success message - consider making a success page or hiding the form on success
+                res.render("customer", { success, fname, lname, phone });
+                }
+            });
+        }
 });
 
 // Getting all of the infomation from customers
-app.get("/customers",(req,res)=>{
+app.get("/admin.html",(req,res)=>{
     connection.query('SELECT * FROM customers',(err, rows, fields)=>{
         if(!err) {
         res.send(rows);
