@@ -21,19 +21,56 @@
     <br>
     <!--creates labels for customer name and number inputs-->
     <!--the regex pattern only allow letters a-z uppercaes and lower case apostophys and dashes -->
+    <!--rechecking and fixing regex pattern, format changed for easier reading and understanding-->
     <form method="POST" action="/register">
     <label for="fname">First name:</label>
-    <input type="text" id="fname" name="fname" pattern="^[ A-Za-z-']*$" maxlength="30"><br><br>
+    <input type="text" 
+    id="fname" 
+    name="fname" 
+    pattern="^(((?!.*'.*)(?!.*-.*)([ ]*))|([\p{L}]+))(?!.*''.*)(?!.*--.*)(?!.*  .*)[\p{L} '-]*$" 
+    title="please enter a valid name, only letters spaces hyphens and apostrophes." 
+    minlength="2" 
+    maxlength="30">
+    <br><br>
     <label for="lname">Last Name:</label>
-    <input type="text" id="lname" name="lname" pattern="^[ A-Za-z-']*$" maxlength="50"><br>
+    <input type="text" 
+    id="lname" 
+    name="lname" 
+    pattern="^(((?!.*'.*)(?!.*-.*)([ ]*))|([\p{L}]+))(?!.*''.*)(?!.*--.*)(?!.*  .*)[\p{L} '-]*$" 
+    title="please enter a valid name, only letters spaces hyphens and apostrophes." 
+    minlength="2" 
+    maxlength="45">
+    <br>
     <p>
     <label for="phoneNum">Phone Number:</label>
     <!--phone number has three diff input feilds to give a easy display to understand-->
     <!--each id must be unique and the name has to match the id-->
     <!--the regex pattern only allows numbers-->
-    (<input type="text" id="phoneNum1" name="phoneNum1" pattern="^[0-9]*$" size="1" maxlength="3">)
-    -<input type="text" id="phoneNum2" name="phoneNum2" pattern="^[0-9]*$" size="1" maxlength="3">-
-    <input type="text" id="phoneNum3" name="phoneNum3" pattern="^[0-9]*$" size="2" maxlength="4">
+    <!--coding format change for easier reading and understanding-->
+    (<input type="text" 
+    id="phoneNum1" 
+    name="phoneNum1" 
+    pattern="^[0-9]*$" 
+    title="please enter 1st 3 numbers of phone number" 
+    size="1" 
+    minlength="3" 
+    maxlength="3">)
+    -<input type="text" 
+    id="phoneNum2" 
+    name="phoneNum2" 
+    pattern="^[0-9]*$" 
+    title="please enter middle 3 digits of phone number" 
+    size="1" 
+    minlength="3" 
+    maxlength="3">-
+    <input type="text" 
+    id="phoneNum3" 
+    name="phoneNum3" 
+    pattern="^[0-9]*$" 
+    title="please enter last 4 numbers of phone number" 
+    size="2" 
+    minlength="4" 
+    maxlength="4">
     </p>
     
     <br><br>
