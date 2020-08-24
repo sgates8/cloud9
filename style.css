@@ -82,6 +82,26 @@ img {
 .adminPg {
     display: grid;
     place-items: center;
+    padding-left: 15%;
+    padding-right: 15%;
 }
-/*#error and #success will need styling for error/success messages*/
-/*change padding for table so columns are more separated*/
+/*this gives a visual cue to the user that their input is valid or invalid*/
+input:invalid {
+    border: 2px solid red;
+}
+input:valid {
+    border: 2px solid green;
+}
+/*this styles the table in the admin page so it's easier to read*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid darkslategray;
+}
+tr:hover {
+    background-color: white;
+}
