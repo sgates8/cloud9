@@ -1,8 +1,9 @@
 /*to read the comments, "this" refers to everything below the comment until the next comment*/
 
-/*this sets the background color for the whole site*/
+/*this sets the background color and font family for the whole site*/
 html {
     background-color: #d9e8ff;
+    font-family: 'Libre Franklin', sans-serif;
 }
 /*this sets the style for the header*/
 ul {
@@ -65,6 +66,9 @@ li a {
     0% {opacity:0;}
     100% {opacity:1;}
 }
+.welcome {
+    margin-bottom: 4%;
+}
 /*this adds a shadow to the logo image*/
 img {
     filter: drop-shadow(0 0 3rem darkslategray);
@@ -79,3 +83,5 @@ img {
     display: grid;
     place-items: center;
 }
+/*#error and #success will need styling for error/success messages*/
+/*change padding for table so columns are more separated*/
