@@ -29,7 +29,8 @@
     </ul>
     <% } else if (locals.success) { %>
     <ul id="success">
-        <li><%= success %></li>
+        <li>Thank you for registering, <%= fname %> <%= lname %>.</li>
+        <li>We'll text you coupons at (<%= phone[0] %>) <%= phone[1] %>-<%= phone[2] %>.</li>
     </ul>
     <% } %>
     <!-- End messages -->

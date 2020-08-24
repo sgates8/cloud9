@@ -114,7 +114,7 @@ app.post("/register", [
                 }
                 else {
                 // Build success message
-                let success = `Thank you for registering, ${fname} ${lname}!  We'll text you coupon codes at (${phone[0]}) ${phone[1]}-${phone[2]}.`
+                let success = `Woo!`
                 // Send success message - consider making a success page or hiding the form on success
                 res.render("customer", { success, fname, lname, phone });
                 }
