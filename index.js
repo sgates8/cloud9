@@ -34,7 +34,7 @@ app.post("/register", [
         // If err, kick the user out to fix it
         .bail()
         // Matches letters spaces hyphens and apostrophes, including unicode characters for people with accents in their names, see https://regex101.com/r/ZKZkOC/4/ for examples
-        .matches(/^(([ ]*)|([\p{L}]+))([\p{L}]+)([\p{L} '-]+)$/gmiu).withMessage("First name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
+        .matches(/^(((?!.*'.*)(?!.*-.*)([ ]*))|([\p{L}]+))(?!.*''.*)(?!.*--.*)(?!.*  .*)[\p{L} '-]*$/gmu).withMessage("First name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
         // If err, kick the user out to fix it
         .bail()
         // Match the length of the database column
@@ -44,7 +44,7 @@ app.post("/register", [
         .trim()
         .notEmpty().withMessage("Last name is required.")
         .bail()
-        .matches(/^(([ ]*)|([\p{L}]+))([\p{L}]+)([\p{L} '-]+)$/gmiu).withMessage("Last name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
+        .matches(/^(((?!.*'.*)(?!.*-.*)([ ]*))|([\p{L}]+))(?!.*''.*)(?!.*--.*)(?!.*  .*)[\p{L} '-]*$/gmu).withMessage("Last name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
         .bail()
         .isLength( { min:2, max:45 }).withMessage("Please enter a last name between 2 and 45 characters."),
     check("phoneNum1")
@@ -67,6 +67,7 @@ app.post("/register", [
     check("phoneNum3")
         // Only run this if the second set worked which doesn't run if the first set didn't, theoretically
         // I probably made this harder on myself by suggesting to split the phone number fields
+        .if(check("phoneNum1").notEmpty().isInt().isLength( { min:3, max:3 } ))
         .if(check("phoneNum2").notEmpty().isInt().isLength( { min:3, max:3 } ))
         .notEmpty().withMessage("Phone number is required.")
         .bail()

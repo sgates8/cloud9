@@ -34,9 +34,13 @@
     <form method="POST" action="/register">
         <!--creates labels for customer name and number inputs-->
         <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname" pattern="^(([ ]*)|([\p{L}]+))([\p{L}]+)([\p{L} '-]+)$" minlength="2" maxlength="30"><br><br>
+        <input type="text" id="fname" name="fname" 
+            pattern="^(((?!.*'.*)(?!.*-.*)([ ]*))|([\p{L}]+))(?!.*''.*)(?!.*--.*)(?!.*  .*)[\p{L} '-]*$" 
+            minlength="2" maxlength="30"><br><br>
         <label for="lname">Last Name:</label>
-        <input type="text" id="lname" name="lname" pattern="^(([ ]*)|([\p{L}]+))([\p{L}]+)([\p{L} '-]+)$" minlength="2" maxlength="45"><br>
+        <input type="text" id="lname" name="lname" 
+            pattern="^(((?!.*'.*)(?!.*-.*)([ ]*))|([\p{L}]+))(?!.*''.*)(?!.*--.*)(?!.*  .*)[\p{L} '-]*$" 
+            minlength="2" maxlength="45"><br>
         <p>
         <label for="phoneNum">Phone Number:</label>
         <!--phone number has three diff input feilds to give a easy display to understand-->
