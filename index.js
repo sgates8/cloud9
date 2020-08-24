@@ -2,24 +2,26 @@ const express =  require("express");
 const app = express();
 const mysql = require("mysql");
 const bodyParser  = require("body-parser");
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 // We need this for backend form validation
 const { check, validationResult } = require("express-validator");
 
-
+// Set the templating engine
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded( { extended: true } ));
+app.use(bodyparser.json);
 app.use(express.static(__dirname + "/public"));
 
+// Set the mysql connection
 let connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    database : 'cloud9',
-    password : 'root'
+    host     : '',
+    user     : '',
+    database : '',
+    password : ''
 });
 
-
+// Render homepage
 app.get("/", (req,res) => {
     res.render("home")
 });
@@ -109,7 +111,33 @@ app.post("/register", [
     }
 });
 
+// Getting all of the infomation from customers
+app.get("/customers",(req,res)=>{
+    connection.query('SELECT * FROM customers',(err, rows, fields)=>{
+        if(!err) {
+        res.send(rows);
+        }
+        else {
+        console.log(err);
+        }
+    })
+});
 
+// And we're running
 app.listen(PORT, () => {
     console.log(`server running on ${PORT}`)
-});
+})
+
+/*  I am not sure this is doing anything here except poking the database, we already have if err where we make queries.
+
+connection.connect((err)=>{
+    if(!err) {
+        console.log('connected');
+    } else{
+        console.log('error \n Error: '+ JSON.strinify(err, undefined, 2));
+    }
+}); 
+*/
+
+
+
