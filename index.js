@@ -69,7 +69,7 @@ app.post("/register", [
     check("phoneNum2")
         // Only run this if the first set worked
         .if(check("phoneNum1").notEmpty().isInt().isLength( { min:3, max:3 } ))
-        .notEmpty().withMessage("Phone number is required.")
+        .notEmpty().withMessage("Please enter a ten digit phone number.")
         .bail()
         .isInt().withMessage("Phone numbers may only contain numbers.")
         .bail()
@@ -79,7 +79,7 @@ app.post("/register", [
         // I probably made this harder on myself by suggesting to split the phone number fields
         .if(check("phoneNum1").notEmpty().isInt().isLength( { min:3, max:3 } ))
         .if(check("phoneNum2").notEmpty().isInt().isLength( { min:3, max:3 } ))
-        .notEmpty().withMessage("Phone number is required.")
+        .notEmpty().withMessage("Please enter a ten digit phone number.")
         .bail()
         .isInt().withMessage("Phone numbers may only contain numbers.")
         .bail()
