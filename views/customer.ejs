@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud 9 Grooming</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header></header>
+    <nav>
+    <ul>
+      <li id="header"><a href="admin.html">Admin</a></li>
+      <li id="header"><a href="homepage.html">Home</a></li>
+    </ul>
+    </nav>  
+    <br>
+    <div class="custInput">
+    <header><h2>Cloud 9 Grooming<h2></header>
+    <br>
+
+    <!-- Form error/success messages -->
+    <% if (locals.errors) { %>
+    <ul id="error">
+        <% locals.errors.forEach(function(error){ %>
+        <li><%= error.msg %></li>
+        <% }); %>
+    </ul>
+    <% } else if (locals.success) { %>
+    <ul id="success">
+        <li>Thank you for registering, <%= fname %> <%= lname %>.</li>
+        <li>We'll text you coupons at (<%= phone[0] %>) <%= phone[1] %>-<%= phone[2] %>.</li>
+    </ul>
+    <% } %>
+    <!-- End messages -->
+
+    <!--creates labels for customer name and number inputs-->
+    <!--the regex pattern only allow letters a-z uppercaes and lower case apostophys and dashes -->
+    <!--rechecking and fixing regex pattern, format changed for easier reading and understanding-->
+    <form method="POST" action="/register">
+        <label for="fname">First name:</label>
+        <input type="text" 
+        id="fname" 
+        name="fname" 
+        pattern="[^-']([a-zA-ZÀ-ÖØ-öø-ÿ '-](?!.*''|--|  |- |' | '| -.*))+" 
+        title="please enter a valid name, only letters spaces hyphens and apostrophes."
+        <% if (locals.errors) { %>
+        value="<%= fname %>"
+        <% }; %>
+        minlength="2" 
+        maxlength="30">
+        <br><br>
+        <label for="lname">Last Name:</label>
+        <input type="text" 
+        id="lname" 
+        name="lname" 
+        pattern="[^-']([a-zA-ZÀ-ÖØ-öø-ÿ '-](?!.*''|--|  |- |' | '| -.*))+" 
+        title="please enter a valid name, only letters spaces hyphens and apostrophes." 
+        <% if (locals.errors) { %>
+        value="<%= lname %>"
+        <% }; %>
+        minlength="2" 
+        maxlength="45">
+        <br>
+        <p>
+        <label for="phoneNum">Phone Number:</label>
+        <!--phone number has three diff input feilds to give a easy display to understand-->
+        <!--each id must be unique and the name has to match the id-->
+        <!--the regex pattern only allows numbers-->
+        <!--coding format change for easier reading and understanding-->
+        (<input type="text" 
+        id="phoneNum1" 
+        name="phoneNum1" 
+        pattern="^[0-9]*$" 
+        title="please enter 1st 3 numbers of phone number" 
+        <% if (locals.errors) { %>
+        value="<%= phone[0] %>"
+        <% }; %>
+        size="1" 
+        minlength="3" 
+        maxlength="3">)
+        -<input type="text" 
+        id="phoneNum2" 
+        name="phoneNum2" 
+        pattern="^[0-9]*$" 
+        title="please enter middle 3 digits of phone number" 
+        <% if (locals.errors) { %>
+        value="<%= phone[1] %>"
+        <% }; %>
+        size="1" 
+        minlength="3" 
+        maxlength="3">-
+        <input type="text" 
+        id="phoneNum3" 
+        name="phoneNum3" 
+        pattern="^[0-9]*$" 
+        title="please enter last 4 numbers of phone number" 
+        <% if (locals.errors) { %>
+        value="<%= phone[2] %>"
+        <% }; %>
+        size="2" 
+        minlength="4" 
+        maxlength="4">
+        </p>
+        
+        <br><br>
+
+        <br>
+        <!--creates buttons-->
+        <button id="client--button">Get Coupon</button>
+        </form>
+        </div>
+        </body>
+    </html>
