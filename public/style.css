@@ -6,14 +6,14 @@ html {
     font-family: 'Libre Franklin', sans-serif;
 }
 /*this sets the style for the header*/
-ul {
+.headUl {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: white;
 }
-li {
+.headLi {
     float: left;
     color: darkslategrey;
     border-style: solid;
@@ -22,12 +22,12 @@ li {
     font-weight: bold;
     padding: 15px 16px;
 }
-li:hover {
+.headLi:hover {
     background-color: #9ebdc2;
     border-style: inset;
     border-color: #aaaaa5;
 }
-li a {
+.headLi a {
     color: darkslategray;
     text-decoration: none;
     display: block;
@@ -103,6 +103,15 @@ input:invalid {
 }
 input:valid {
     border: 2px solid green;
+
+}
+#error {
+    text-shadow: 2px 2px 5px red;
+    font-size: 1.3em;
+}
+#success {
+    text-shadow: 2px 2px 5px green;
+    font-size: 1.3em;
 }
 /*this styles the table in the admin page so it's easier to read*/
 table {
