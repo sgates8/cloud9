@@ -103,6 +103,7 @@ input:invalid {
 }
 input:valid {
     border: 2px solid green;
+
 }
 #error {
     text-shadow: 2px 2px 5px red;
