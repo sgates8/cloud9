@@ -25,11 +25,12 @@
         <th>Phone Number</th>
     </thead>
     <tbody id="custDatabase"> <!-- Table Body -->
-        
-        <tr> <!-- Table Row -->
-            <td>Example Name</td> <!-- Table Cell --> 
-            <td>706-000-0000</td>
-        </tr>
+        <% locals.rows.forEach(function(rows){ %>
+            <tr>
+                <td><%=rows.fname%> <%=rows.lname%></td>
+                <td><%=rows.phone%></td>
+            </tr>
+            <% }); %>
     </tbody>
 </table>
 </div>

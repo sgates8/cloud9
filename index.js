@@ -127,7 +127,7 @@ app.post("/register", [
 app.get("/admin",(req,res)=>{
     connection.query('SELECT * FROM customers',(err, rows, fields)=>{
         if(!err) {
-        res.send(rows);
+        res.render("admin",{rows});
         }
         else {
         console.log(err);
