@@ -32,6 +32,9 @@ html {
     text-decoration: none;
     display: block;
 }
+.logout {
+    float: right;
+}
 /*this styles the logo and welcome message*/
 .landing {
     display: grid;

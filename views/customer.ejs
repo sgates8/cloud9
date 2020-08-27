@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header></header>
     <nav>
-    <ul>
-      <li id="header"><a href="password"></a></li>
-      <li id="header"><a href="/">Home</a></i>
-
-
-    </ul>
+        <ul class="headUl">
+            <li class="headLi"><a href="/">Home</a></li>
+            <li class="headLi"><a href="password">Admin</a></li>
+            <% if (locals.loggedIn) { %>
+            <li class="headLi logout"><a href="logout">Logout</a></li>
+            <% } %>
+          </ul>
     </nav>  
     <br>
     <div class="custInput"><span>
@@ -110,7 +110,7 @@
 
         <br>
         <!--creates buttons-->
-        <button class="button" id="client--button">Get Coupon</button>
+        <p><button class="button" id="client--button">Get Coupon</button></p>
         </form>
         </span></div>
         </body>
