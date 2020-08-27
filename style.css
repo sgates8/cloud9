@@ -77,6 +77,13 @@ img {
 .custInput {
     display: grid;
     place-items: center;
+    background-image: url('Cloud9 Logo.png');
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+.custInput span {
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: center;
 }
 .button {
     background-color: darkslategray;
@@ -109,7 +116,7 @@ input:valid {
     font-size: 1.3em;
 }
 #success {
-    text-shadow: 2px 2px 5px green;
+    text-shadow: 2px 2px 5px white;
     font-size: 1.3em;
 }
 /*this styles the table in the admin page so it's easier to read*/

@@ -26,9 +26,11 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
+
 app.get("/password", (req, res) => {
     res.render("password");
 });
+
 
 // Render customer page
 app.get ("/customer", (req, res) => {
@@ -45,7 +47,7 @@ app.post("/register", [
         // If err, kick the user out to fix it
         .bail()
         // Matches letters spaces hyphens and apostrophes, including unicode characters for people with accents in their names, see https://regex101.com/r/ZKZkOC/4/ for examples
-        .matches(/[^-']([a-zA-ZÀ-ÖØ-öø-ÿ\ '-](?!.*''|--|\ \ |-\ |'\ |\ '|\ -.*))+/).withMessage("First name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
+        .matches(/^[^-']([a-zA-ZÀ-ÖØ-öø-ÿ '-](?!.*''|--|  |- |' | '| -.*))+$/, 'g').withMessage("First name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
         // If err, kick the user out to fix it
         .bail()
         // Match the length of the database column
@@ -55,7 +57,7 @@ app.post("/register", [
         .trim()
         .notEmpty().withMessage("Last name is required.")
         .bail()
-        .matches(/[^-']([a-zA-ZÀ-ÖØ-öø-ÿ\ '-](?!.*''|--|\ \ |-\ |'\ |\ '|\ -.*))+/).withMessage("Last name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
+        .matches(/^[^-']([a-zA-ZÀ-ÖØ-öø-ÿ '-](?!.*''|--|  |- |' | '| -.*))+$/, 'g').withMessage("Last name should start with a letter, and may only contain letters with spaces, hyphens, and apostrophes.")
         .bail()
         .isLength( { min:2, max:45 }).withMessage("Please enter a last name between 2 and 45 characters."),
     check("phoneNum1")
