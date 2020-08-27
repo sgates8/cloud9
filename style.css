@@ -4,6 +4,20 @@
 html {
     background-color: #d9e8ff;
     font-family: 'Libre Franklin', sans-serif;
+  margin: 0;
+}
+@media screen and (max-width: 320px){
+#container {
+    margin: 0 auto;
+width: 98%;
+height: 400px;
+padding: 1%;
+}
+}
+.logo{
+    justify-content: center;
+    justify-items: center;
+    max-width: 90%;
 }
 /*this sets the style for the header*/
 .headUl {
@@ -12,6 +26,7 @@ html {
     padding: 0;
     overflow: hidden;
     background-color: white;
+    
 }
 .headLi {
     float: left;
@@ -72,6 +87,11 @@ html {
 /*this adds a shadow to the logo image*/
 img {
     filter: drop-shadow(0 0 3rem darkslategray);
+    max-width: 960px;
+ 
+  
+  
+
 }
 /*this styles the customer page*/
 .custInput {
