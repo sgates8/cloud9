@@ -25,12 +25,13 @@ let connection = mysql.createConnection({
 app.get("/", (req, res) => {
     res.render("home");
 });
-app.get("/homepage.html", (req, res) => {
-    res.render("home");
+
+app.get("/password", (req, res) => {
+    res.render("password");
 });
 
 // Render customer page
-app.get ("/customer.html", (req, res) => {
+app.get ("/customer", (req, res) => {
     res.render("customer");
 });
 
@@ -123,10 +124,10 @@ app.post("/register", [
 });
 
 // Getting all of the infomation from customers
-app.get("/admin.html",(req,res)=>{
+app.get("/admin",(req,res)=>{
     connection.query('SELECT * FROM customers',(err, rows, fields)=>{
         if(!err) {
-        res.send(rows);
+        res.render("admin",{rows});
         }
         else {
         console.log(err);
