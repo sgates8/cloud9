@@ -9,13 +9,12 @@
 </head>
 <body>
 <!--more text created on homepage-->
-
-
-<ul>
-  <li id="header"><a href="customer">Customer</a></li>
-  <li id="header"><a href="password">Admin</a></li>
-
-
+<ul class="headUl">
+  <li class="headLi"><a href="customer">Customer</a></li>
+  <li class="headLi"><a href="password">Admin</a></li>
+  <% if (locals.loggedIn) { %>
+  <li class="headLi logout"><a href="logout">Logout</a></li>
+  <% } %>
 </ul>
 <br>
 <div class="home">
