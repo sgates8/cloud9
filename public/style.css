@@ -4,6 +4,22 @@
 html {
     background-color: #d9e8ff;
     font-family: 'Libre Franklin', sans-serif;
+    margin: 0;
+}
+/* makes the webpage responsive*/
+@media screen and (max-width: 320px){
+#container {
+    margin: 0 auto;
+    width: 98%;
+    height: 400px;
+    padding: 1%;
+    }
+}
+/* resized imag*/
+.logo{
+    justify-content: center;
+    justify-items: center;
+    max-width: 90%;
 }
 /*this sets the style for the header*/
 .headUl {
@@ -75,6 +91,7 @@ html {
 /*this adds a shadow to the logo image*/
 img {
     filter: drop-shadow(0 0 3rem darkslategray);
+    max-width: 960px;
 }
 /*this styles the customer page*/
 .custInput {
@@ -82,12 +99,13 @@ img {
     place-items: center;
     background-image: url('Cloud9 Logo.png');
     background-repeat: no-repeat;
-    background-position: center left;
+    background-position: center center;
 }
 /*i added a transparent background so that the form is still readable over the logo when the screen is resized*/
 .custInput span {
     background-color: rgba(255, 255, 255, 0.7);
     text-align: center;
+    padding:20px;
 }
 .button {
     background-color: darkslategray;

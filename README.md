@@ -1,106 +1,98 @@
-# cloud9
+# Cloud 9 Grooming
 
 
-cbc9 group project
+## Description
 
+This is CBC9's group project, Cloud9 Grooming, a website that offers coupons for a fictional dog grooming business. There are three main pages: the welcome page, where you are greeted with the business information, the customer page, where a customer may register for a free coupon by giving their name and phone number to a database, and the admin page, where the contents of the database are displayed in an orderly manner- but you need to enter a password to access the admin page.  There are no user accounts, just a basic password to log in.
 
-# Description
+## Prerequisities
 
-This is CBC9's group project, Cloud9 Grooming, a website that offers coupons for a fictional dog grooming business. There are three main pages: the welcome page, where you are greeted with the business information, the customer page, where a customer may register for a free coupon by giving their name and phone number to a database, and the admin page, where the contents of the database are displayed in an orderly manner. 
+- NodeJS: https://nodejs.org/ (We use LTS)
+- MySQL: https://dev.mysql.com/downloads/ (If you're running windows, use the installer)
 
-# Prerequisities
+## Dependencies
 
-## npm install should install all dependancies
+- express: https://www.npmjs.com/package/express
+- express-validator: https://www.npmjs.com/package/express-validator
+- express-session: https://www.npmjs.com/package/express-session
+- express-mysql-session: https://www.npmjs.com/package/express-mysql-session
+- body-parser: https://www.npmjs.com/package/body-parser
+- ejs: https://www.npmjs.com/package/ejs
+- mysql: https://www.npmjs.com/package/mysql
 
-npm install express
+## Installation
 
-npm init
+1. Git clone repo into local terminal (This gets you a copy)
+2. Open repo in terminal (This opens the copy)
+3. Enter 'npm init' (This will install node)
+4. Enter 'npm install' (This will install all dependancies)
+5. Use Workbench, or your preferred MySQL database manager, to run included cloud9db.sql (This will set up the database)
 
-npm install ejs
-
-npm install mysql
-
-npm install body-parser
-
-npm install express-validator
-
-
-**add start node index js (or whatever the js file name is) under scripts in json file
-git clone (repo)
-
-# Installation
-
-1. Git clone repo into local terminal
-2. Open repo in terminal
-3. npm install (this will install all dependancies)
-4. run included cloud9db.sql to setup the database
-
-
-# Contributing
+## Contributing
 
 ### Issue Tracker
 https://github.com/sgates8/cloud9/issues
 
-## CBC9 Contributers
+### CBC9 Contributers
 
-### Project Manager
+#### Project Manager
 * Sylvia Gates
 
-### Front End
+#### Front End
 * Haley Rohe
 * Azaria Berry
 * Shusweela Oplihant
 
-### Back End
+#### Back End
 * Irene Williams
 * Christine Scala
 * Christina Deming
 
-### QA
+#### QA
 * Chant'va Harris
 * Andrew Garnett
 
-### Roleplayers
-* Morgan Smith (client)
+#### Roleplayers
+* Morgan Smith (Client)
 * Nick Harcourt (Technical Support)
 
-# license
+## License
 
- GNU GENERAL PUBLIC LICENSE
+GNU GENERAL PUBLIC LICENSE
+
 Version 3, 29 June 2007
 
-# Contact
+## Contact
 
-### Christina Deming
+#### Christina Deming
 https://fabulousspacecat.github.io/
 
-### Azaria Berry
+#### Azaria Berry
 https://github.com/AzariaBerry
 
-### Sylvia Gates
+#### Sylvia Gates
 https://github.com/sgates8
 
-### Haley Rohe
+#### Haley Rohe
 https://github.com/HJoRo
 
-### Christine Scala
+#### Christine Scala
 https://github.com/christine-scala
 
-### Irene Williams
+#### Irene Williams
 https://github.com/irenewilliams77
 
-### Shusweela Oplihant
+#### Shusweela Oplihant
 https://github.com/Shusweela
 
-### Andrew Grant
+#### Andrew Garnett
 https://github.com/Rocketdog57
 
-### Chant'va harris
+#### Chant'va harris
 https://github.com/Chanteva
 
-### Morgan Smith
+#### Morgan Smith
 https://github.com/glitchgirl
 
-### Nick Harcourt
+#### Nick Harcourt
 https://github.com/HBull5
-
