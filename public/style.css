@@ -107,6 +107,11 @@ img {
     text-align: center;
     padding:20px;
 }
+.info {
+    max-width:700px;
+    padding:20px;  
+    font-size:1.5rem; 
+}
 .button {
     background-color: darkslategray;
     border: none;
