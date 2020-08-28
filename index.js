@@ -17,10 +17,10 @@ app.use(express.static(__dirname + "/public"));
 
 // Set the mysql connection
 let connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    database : 'cloud9',
-    password : 'root'
+    host     : 'sq65ur5a5bj7flas.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user     : 'ohabyj452qkno0v0',
+    database : 'hkthyoe12txt4hds',
+    password : 'uwc6l221fbdb8mtt'
 });
 // And the session store
 let sessionStore = new MySQLStore({
